@@ -116,8 +116,8 @@ export default function ServicesShowcase() {
             </div>
           </div>
 
-          {/* Desktop Stage Box — Fast solid surface (no heavy backdrop-blur, perfectly locked height) */}
-          <div className="relative rounded-3xl bg-[#0c0c0c] border border-white/[0.08] p-7 lg:p-8 overflow-hidden shadow-2xl shrink-0">
+          {/* Desktop Stage Box — Fast solid surface, strictly locked height and dimensions for all cards */}
+          <div className="relative rounded-3xl bg-[#0c0c0c] border border-white/[0.08] p-7 lg:p-8 overflow-hidden shadow-2xl shrink-0 h-[500px] flex flex-col justify-center">
             {/* Fluid Continuous Progress Line (Subpixel smooth and GPU-accelerated) */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-white/[0.06] z-20">
               <motion.div
@@ -127,7 +127,7 @@ export default function ServicesShowcase() {
             </div>
 
             {/* Stable Single-Cell CSS Grid: prevents layout shift and vertical jumping */}
-            <div className="grid grid-cols-1 grid-rows-1 items-center">
+            <div className="grid grid-cols-1 grid-rows-1 items-center h-full">
               <AnimatePresence initial={false}>
                 <motion.div
                   key={activeService.slug}
@@ -135,11 +135,11 @@ export default function ServicesShowcase() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="col-start-1 row-start-1 grid grid-cols-12 gap-10 items-center will-change-opacity"
+                  className="col-start-1 row-start-1 grid grid-cols-12 gap-10 items-center will-change-opacity h-full"
                 >
                   {/* Left Column: Clear Text & Deliverables with locked geometry */}
-                  <div className="col-span-7 space-y-4">
-                    <div className="flex flex-wrap items-center gap-3 text-xs">
+                  <div className="col-span-7 flex flex-col justify-between space-y-3.5">
+                    <div className="flex flex-wrap items-center gap-3 text-xs h-[24px]">
                       <span className="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-white text-[11px]">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                         <span>AREE DI STUDIO &bull; {activeService.idNumber}</span>
@@ -150,25 +150,25 @@ export default function ServicesShowcase() {
                     </div>
 
                     <div className="space-y-1">
-                      <h3 className="text-3xl lg:text-4xl font-light tracking-tight text-white leading-[1.05] min-h-[42px] flex items-center">
+                      <h3 className="text-3xl lg:text-4xl font-light tracking-tight text-white leading-tight h-[42px] flex items-center truncate">
                         {activeService.title}
                       </h3>
-                      <p className="text-sm text-white/80 font-light leading-relaxed max-w-2xl min-h-[38px] flex items-center">
+                      <p className="text-sm text-white/80 font-light leading-relaxed max-w-2xl h-[40px] flex items-center line-clamp-2">
                         {activeService.tagline}
                       </p>
                     </div>
 
-                    <p className="text-xs text-muted leading-relaxed max-w-2xl font-normal line-clamp-2 min-h-[34px]">
+                    <p className="text-xs text-muted leading-relaxed max-w-2xl font-normal line-clamp-2 h-[34px] flex items-center">
                       {activeService.leadParagraph}
                     </p>
 
-                    {/* Deliverables Grid with uniform box heights */}
+                    {/* Deliverables Grid with uniform box heights (strictly 4 items, 2x2) */}
                     <div className="space-y-1 pt-0.5">
-                      <span className="text-[10px] uppercase tracking-wider text-muted/60 block font-medium">
+                      <span className="text-[10px] uppercase tracking-wider text-muted/60 block font-medium h-[16px]">
                         Cosa Include
                       </span>
-                      <div className="grid grid-cols-2 gap-2">
-                        {activeService.deliverables.map((item, dIdx) => (
+                      <div className="grid grid-cols-2 gap-2 h-[120px]">
+                        {activeService.deliverables.slice(0, 4).map((item, dIdx) => (
                           <div
                             key={dIdx}
                             className="flex items-start gap-2 p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/15 transition-colors h-[56px]"
@@ -190,16 +190,18 @@ export default function ServicesShowcase() {
                     </div>
 
                     {/* Bottom Action Strip */}
-                    <div className="flex items-center justify-between gap-4 pt-3 border-t border-white/[0.06]">
+                    <div className="flex items-center justify-between gap-4 pt-3 border-t border-white/[0.06] h-[48px]">
                       <div className="flex items-center gap-3 text-xs text-muted/70 text-[11px]">
                         <span>Licenza: <strong className="text-white font-normal">Illimitata</strong></span>
                         <span>&bull;</span>
-                        <span>Revisioni: <strong className="text-white font-normal">{activeService.deliverablesSpecs.revisions}</strong></span>
+                        <span className="truncate max-w-[280px]">
+                          Revisioni: <strong className="text-white font-normal">{activeService.deliverablesSpecs.revisions}</strong>
+                        </span>
                       </div>
 
                       <Link
                         href={`/services/${activeService.slug}`}
-                        className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black hover:bg-neutral-200 text-xs uppercase tracking-wider font-medium transition-colors"
+                        className="group shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black hover:bg-neutral-200 text-xs uppercase tracking-wider font-medium transition-colors"
                       >
                         <span>Dettagli e Metodologia</span>
                         <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -207,9 +209,9 @@ export default function ServicesShowcase() {
                     </div>
                   </div>
 
-                  {/* Right Column: Visual Stage (GPU-friendly, locked aspect) */}
-                  <div className="col-span-5">
-                    <div className="relative aspect-[16/11] max-h-[340px] rounded-2xl overflow-hidden bg-neutral-900 border border-white/[0.08] group shadow-xl">
+                  {/* Right Column: Visual Stage (GPU-friendly, locked aspect & dimensions) */}
+                  <div className="col-span-5 flex items-center justify-center">
+                    <div className="relative aspect-[16/11] w-full max-h-[340px] rounded-2xl overflow-hidden bg-neutral-900 border border-white/[0.08] group shadow-xl">
                       <Image
                         src={activeService.heroMedia.url}
                         alt={activeService.title}
@@ -340,31 +342,31 @@ export default function ServicesShowcase() {
               </Link>
 
               {/* Title & Tagline */}
-              <div className="space-y-1 pt-0.5">
-                <div className="flex items-center justify-between text-[10px] text-muted/60 uppercase tracking-wider">
+              <div className="space-y-1 pt-0.5 shrink-0">
+                <div className="flex items-center justify-between text-[10px] text-muted/60 uppercase tracking-wider h-[16px]">
                   <span>DISCIPLINA {activeService.idNumber}</span>
                   <span className="text-white/80 font-normal">
                     {activeService.deliverablesSpecs.turnaround}
                   </span>
                 </div>
-                <h3 className="text-2xl font-light tracking-tight text-white leading-tight">
+                <h3 className="text-2xl font-light tracking-tight text-white leading-tight h-[30px] flex items-center truncate">
                   {activeService.title}
                 </h3>
-                <p className="text-xs text-white/80 font-light leading-relaxed">
+                <p className="text-xs text-white/80 font-light leading-relaxed line-clamp-2 h-[34px] flex items-center">
                   {activeService.tagline}
                 </p>
               </div>
 
-              {/* Deliverables Grid (All 4 Items in 2x2 Grid) */}
-              <div className="space-y-2 pt-1">
-                <span className="text-[10px] uppercase tracking-wider text-muted/60 block font-medium">
+              {/* Deliverables Grid (Strictly 4 Items in 2x2 Grid) */}
+              <div className="space-y-1.5 pt-0.5 shrink-0">
+                <span className="text-[10px] uppercase tracking-wider text-muted/60 block font-medium h-[14px]">
                   Cosa Include
                 </span>
-                <div className="grid grid-cols-2 gap-2">
-                  {activeService.deliverables.map((item, dIdx) => (
+                <div className="grid grid-cols-2 gap-2 h-[120px]">
+                  {activeService.deliverables.slice(0, 4).map((item, dIdx) => (
                     <div
                       key={dIdx}
-                      className="p-2.5 rounded-xl bg-white/[0.025] border border-white/[0.06] flex items-start gap-2"
+                      className="p-2.5 rounded-xl bg-white/[0.025] border border-white/[0.06] flex items-start gap-2 h-[56px]"
                     >
                       <div className="w-3.5 h-3.5 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-2 h-2 text-white" />
@@ -383,17 +385,19 @@ export default function ServicesShowcase() {
               </div>
 
               {/* Specs Strip */}
-              <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-white/[0.02] border border-white/[0.04] text-[10px] text-muted/70">
+              <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-white/[0.02] border border-white/[0.04] text-[10px] text-muted/70 h-[34px] shrink-0">
                 <span>Licenza: <strong className="text-white font-normal">Illimitata</strong></span>
                 <span>&bull;</span>
-                <span>Revisioni: <strong className="text-white font-normal">{activeService.deliverablesSpecs.revisions}</strong></span>
+                <span className="truncate max-w-[170px]">
+                  Revisioni: <strong className="text-white font-normal">{activeService.deliverablesSpecs.revisions}</strong>
+                </span>
               </div>
 
               {/* CTA Action Button */}
-              <div className="pt-1">
+              <div className="pt-0.5 shrink-0">
                 <Link
                   href={`/services/${activeService.slug}`}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-white text-black text-xs uppercase tracking-wider font-medium hover:bg-neutral-200 transition-colors shadow-lg shadow-white/5"
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-white text-black text-xs uppercase tracking-wider font-medium hover:bg-neutral-200 transition-colors shadow-lg shadow-white/5 h-[42px]"
                 >
                   <span>Dettagli e Metodologia</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />

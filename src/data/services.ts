@@ -33,9 +33,9 @@ export const SERVICES: ServiceDetail[] = [
         specs: "Figma File organizzato con componenti riutilizzabili",
       },
       {
-        title: "Sviluppo Frontend ad Alte Prestazioni (Next.js / Shopify)",
+        title: "Sviluppo Full-Stack & CMS (Next.js / Shopify)",
         description:
-          "Codice moderno, pulito e accessibile. Transizioni di pagina fluide con Framer Motion, caricamento istantaneo senza attese e compatibilità garantita con tutti i browser e dispositivi.",
+          "Codice reattivo con transizioni Framer Motion, caricamento istantaneo e pannello di gestione intuitivo per aggiornare contenuti in autonomia, con video guide dedicate.",
         specs: "Repository Git privato + hosting serverless ad alta velocità",
       },
       {
@@ -50,18 +50,12 @@ export const SERVICES: ServiceDetail[] = [
           "Markup semantico ottimizzato per Google, immagini compresse di ultima generazione (WebP/AVIF), sitemap automatica e tracciamento privacy-friendly (GA4, Pixel Meta).",
         specs: "Punteggio Lighthouse 90+ su dispositivi mobile",
       },
-      {
-        title: "Backend Intuitivo & Video Guide per il Team",
-        description:
-          "Pannello di controllo semplice per aggiornare testi, immagini e prodotti in completa autonomia con un click, accompagnato da brevi video tutorial personalizzati registrati da noi.",
-        specs: "Video tutorial registrati su misura per il tuo staff",
-      },
     ],
     deliverablesSpecs: {
       formats: ["Codice Sorgente TypeScript / Next.js / Tailwind", "Shopify Theme Files", "Figma File Master"],
       licensing: "Proprietà totale del codice sorgente e del repository Git, zero costi di licenza proprietaria",
       turnaround: "3-4 settimane per landing page o portfolio d'autore; 6-8 settimane per piattaforme e-commerce complesse",
-      revisions: "2 round di revisione sul prototipo Figma + collaudo pre-lancio incluso",
+      revisions: "2 round sul prototipo Figma + collaudo pre-lancio",
     },
     process: [
       {
