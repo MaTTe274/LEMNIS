@@ -35,6 +35,7 @@ import {
  * ============================================================================
  */
 export const CLIENT_ACCESS_CODE = "LEMNIS2026";
+export const DEFAULT_WEB3FORMS_KEY = "111cfb85-799a-4330-b2e1-a1d91db3a71f";
 
 const STORAGE_KEY = "lemnis_onboarding_draft";
 const AUTH_KEY = "lemnis_onboarding_unlocked";
@@ -237,6 +238,8 @@ export default function OnboardingClient() {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [formattedSummary, setFormattedSummary] = useState<string>("");
   const [copied, setCopied] = useState<boolean>(false);
+  const [emailStatus, setEmailStatus] = useState<"idle" | "sent" | "error">("idle");
+  const [emailErrorMsg, setEmailErrorMsg] = useState<string>("");
 
   // 1. Inizializzazione da localStorage
   useEffect(() => {
@@ -428,6 +431,42 @@ Questo testo è pronto per essere incollato direttamente su Claude o ChatGPT per
     const summary = generateMarkdownSummary(formData);
     setFormattedSummary(summary);
 
+    const apiKey =
+      process.env.NEXT_PUBLIC_WEB3FORMS_KEY || DEFAULT_WEB3FORMS_KEY;
+
+    // 1. Invio Diretto Client-Side a Web3Forms (supportato dal piano free direttamente da browser)
+    try {
+      const web3Res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: apiKey,
+          subject: `Nuovo Onboarding Sito: ${formData.businessName || "Nuovo Cliente"}`,
+          from_name: "Lemnis Studio Onboarding",
+          name: formData.businessName || "Cliente Lemnis",
+          email: formData.publicEmail || "studio@lemnis.it",
+          phone: formData.publicPhone || "-",
+          message: summary,
+        }),
+      });
+
+      const web3Data = await web3Res.json();
+      if (web3Data && web3Data.success) {
+        setEmailStatus("sent");
+      } else {
+        setEmailStatus("error");
+        setEmailErrorMsg(web3Data?.message || "Impossibile inviare la notifica email.");
+      }
+    } catch (err) {
+      console.error("Client fetch error verso Web3Forms:", err);
+      setEmailStatus("error");
+      setEmailErrorMsg("Errore di rete durante l'invio della notifica email.");
+    }
+
+    // 2. Backup su server API route
     try {
       await fetch("/api/onboarding", {
         method: "POST",
@@ -577,6 +616,28 @@ Questo testo è pronto per essere incollato direttamente su Claude o ChatGPT per
               Il nostro team tecnico è già al lavoro per analizzare le tue risposte e impostare la struttura visiva del tuo nuovo sito.
             </p>
           </div>
+
+          {/* Banner Notifica Email */}
+          {emailStatus === "sent" && (
+            <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-3">
+              <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>
+                <strong>Email recapitata con successo!</strong> La scheda completa è arrivata alla casella di posta di Lemnis Studio.
+              </span>
+            </div>
+          )}
+
+          {emailStatus === "error" && (
+            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-amber-300">Stato notifica email:</span>
+                <span>{emailErrorMsg}</span>
+              </div>
+              <p className="text-[11px] text-muted">
+                Nessun problema: il questionario è comunque salvato. Puoi inoltrarlo direttamente su WhatsApp a Luca con il pulsante qui sotto.
+              </p>
+            </div>
+          )}
 
           {/* Azioni di Copia & Download */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
