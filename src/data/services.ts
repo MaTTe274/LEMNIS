@@ -27,28 +27,28 @@ export const SERVICES: ServiceDetail[] = [
     },
     deliverables: [
       {
-        title: "Design UI/UX Sartoriale (Figma Master)",
+        title: "Start — Vetrina Express",
         description:
-          "Progettazione su misura di ogni schermata per desktop e mobile. Design system completo: gerarchia tipografica, palette, griglie responsive e prototipo interattivo navigabile prima dello sviluppo.",
-        specs: "Figma File organizzato con componenti riutilizzabili",
+          "Sito one-page o fino a 3 pagine, mobile-first, testi SEO inclusi, pulsante WhatsApp, form contatti, mappa Google, link social e 1 revisione.",
+        specs: "Sito essenziale ad attivazione rapida per professionisti e botteghe",
       },
       {
-        title: "Sviluppo Full-Stack & CMS (Next.js / Shopify)",
+        title: "Business — Attività Completa",
         description:
-          "Codice reattivo con transizioni Framer Motion, caricamento istantaneo e pannello di gestione intuitivo per aggiornare contenuti in autonomia, con video guide dedicate.",
-        specs: "Repository Git privato + hosting serverless ad alta velocità",
+          "5–7 pagine, SEO locale per singoli servizi, integrazione prenotazioni/preventivi, ottimizzazione Google Maps inclusa, report visite e 2 revisioni.",
+        specs: "L'architettura multi-pagina più scelta per attrarre clienti sul territorio",
       },
       {
-        title: "Configurazione E-Commerce & Checkout Fluido",
+        title: "Store — E-Commerce Sartoriale",
         description:
-          "Organizzazione del catalogo, schede prodotto ricche, carrello dinamico e integrazione con tutti i metodi di pagamento moderni (Apple Pay, Google Pay, Stripe, Klarna, PayPal).",
-        specs: "Piattaforma Shopify o Headless Commerce collaudata",
+          "Negozio online fino a 30 prodotti caricati, pagamenti (carte, PayPal, Apple Pay, Satispay, Klarna), spedizioni, email automatiche e video-tutorial.",
+        specs: "Piattaforma di vendita diretta ad alte prestazioni senza frizioni",
       },
       {
-        title: "SEO Tecnico, Performance Core Web Vitals & Analytics",
+        title: "Gestione Tecnica & Conformità Legale",
         description:
-          "Markup semantico ottimizzato per Google, immagini compresse di ultima generazione (WebP/AVIF), sitemap automatica e tracciamento privacy-friendly (GA4, Pixel Meta).",
-        specs: "Punteggio Lighthouse 90+ su dispositivi mobile",
+          "Hosting veloce, dominio, certificato SSL, backup regolari, licenza Privacy/Cookie Policy (GDPR) e 1–2 piccole modifiche mensili incluse.",
+        specs: "Canone di manutenzione continua per zero pensieri tecnici",
       },
     ],
     deliverablesSpecs: {
@@ -165,28 +165,28 @@ export const SERVICES: ServiceDetail[] = [
     },
     deliverables: [
       {
+        title: "Social Start — Presenza & Cura",
+        description:
+          "Gestione Instagram e Facebook con 8 post/grafiche mensili, storie dedicate, piano editoriale ragionato, copy essenziale e report mensile dei risultati.",
+        specs: "In partnership con collaboratore P.IVA dedicato",
+      },
+      {
+        title: "Social Pro — Video & Meta Ads",
+        description:
+          "12 post mensili, 4 Reel cinematografici a ritmo musicale, storie settimanali costanti e gestione strategica di 1 campagna sponsorizzata locale Meta Ads.",
+        specs: "Per attività che puntano a generare nuovi contatti di zona",
+      },
+      {
         title: "Direzione Artistica del Feed & Grid System",
         description:
           "Definizione delle linee guida visive su Instagram: palette cromatica, composizione della griglia, tipografia dedicata e ritmo tra pieni e vuoti.",
-        specs: "Brand Social Guidebook + Template Griglia",
+        specs: "Brand Social Guidebook + Template Griglia coordinata",
       },
       {
-        title: "Produzione Short-Form 9:16 (Reels & TikTok)",
+        title: "Kit Lancio Social & Copertura Eventi",
         description:
-          "Riprese con camere cinema e montaggio a ritmo musicale. Tagli veloci sincronizzati al beat, sound design d'impatto e sottotitoli stilizzati nativi.",
-        specs: "8-12 Master Video MP4 1080x1920 (4K Downsampled)",
-      },
-      {
-        title: "Caroselli Narrativi & Still-Life Social",
-        description:
-          "Progettazione di caroselli fotografici e slide per raccontare lavorazioni artigianali, dettagli materici e storie di prodotto ad alto tasso di salvataggio.",
-        specs: "JPEG Ultra-Res sRGB + Grafiche PNG",
-      },
-      {
-        title: "Piano Editoriale & Copywriting Essenziale",
-        description:
-          "Calendario mensile delle uscite con testi scritti senza enfasi vuota: copy sintetici, informativi e perfettamente allineati al tono del marchio.",
-        specs: "Foglio di Pianificazione Condiviso + Copy Book",
+          "Grafiche pronte con mockup smartphone per annunciare il nuovo sito, aperture speciali, promozioni o nuovi prodotti ai follower del brand.",
+        specs: "JPEG Ultra-Res sRGB + Grafiche PNG native per storie e feed",
       },
     ],
     deliverablesSpecs: {

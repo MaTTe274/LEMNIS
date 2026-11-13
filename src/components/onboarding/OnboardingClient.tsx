@@ -171,23 +171,33 @@ const TONE_OPTIONS = [
 const PACKAGE_OPTIONS = [
   {
     title: "Start — Vetrina Express",
-    badge: "Essenziale & Veloce",
-    desc: "Sito monopagina moderno con presentazione chiara dell'attività, orari, galleria e contatti rapidi.",
+    badge: "Sito Web",
+    desc: "Sito one-page o fino a 3 pagine, mobile-first, testi SEO inclusi, pulsante WhatsApp, form contatti, mappa Google e 1 revisione.",
   },
   {
     title: "Business — Attività Completa",
-    badge: "Consigliato",
-    desc: "Sito multi-pagina sartoriale: home, pagine servizi dettagliate, chi siamo, portfolio lavori e SEO locale avanzata.",
+    badge: "Il Più Scelto",
+    desc: "5–7 pagine, SEO locale per singoli servizi, prenotazioni/preventivi, ottimizzazione Google Maps inclusa, report mensile e 2 revisioni.",
   },
   {
     title: "Store — E-Commerce",
     badge: "Vendita Online",
-    desc: "Piattaforma e-commerce completa con catalogo prodotti, checkout rapido, pagamenti digitali e gestione ordini.",
+    desc: "Negozio online fino a 30 prodotti, pagamenti (carte, PayPal, Apple Pay, Satispay, Klarna), spedizioni, video-tutorial e 2 revisioni.",
+  },
+  {
+    title: "Google Maps & Recensioni",
+    badge: "Pacchetto Apripista",
+    desc: "Creazione e ottimizzazione scheda Google Business Profile, SEO locale di zona, 15–20 foto curate e QR Code stampabile per recensioni a 5 stelle.",
+  },
+  {
+    title: "Menu QR / Listino Digitale",
+    badge: "Pacchetto Apripista",
+    desc: "Pagina mobile per ristoranti, bar o centri estetici con categorie e allergeni, grafica QR Code da stampare e aggiornamenti prezzi continui.",
   },
   {
     title: "Non ricordo / Da definire insieme",
     badge: "Consulenza",
-    desc: "Definiremo insieme l'architettura ideale durante la prima chiamata di allineamento.",
+    desc: "Valuteremo insieme l'opzione più adatta al tuo settore e ai tuoi obiettivi durante la nostra prima chiamata.",
   },
 ];
 
@@ -210,7 +220,7 @@ const AVAILABLE_FEATURES = [
     desc: "Griglia elegante dei migliori scatti o progetti realizzati, ottimizzata per smartphone.",
   },
   {
-    name: "Sezione Recensioni Google",
+    name: "Sezione Recensioni Google (Badge 5 Stelle)",
     desc: "Badge con stelle e recensioni verificate per trasmettere immediata fiducia ai visitatori.",
   },
   {
@@ -220,6 +230,26 @@ const AVAILABLE_FEATURES = [
   {
     name: "Sistema prenotazione appuntamenti",
     desc: "Calendario interattivo per consentire ai clienti di prenotare date e orari disponibili.",
+  },
+  {
+    name: "Setup Email Aziendali (info@tuodominio.it)",
+    desc: "Configurazione caselle professionali su Google Workspace o Zoho con filtri antispam.",
+  },
+  {
+    name: "Servizio Fotografico in Loco",
+    desc: "Sessione di scatto professionale direttamente presso la tua attività con 20–30 foto ritoccate.",
+  },
+  {
+    name: "Logo Restyling & Biglietti da Visita",
+    desc: "Modernizzazione logo esistente e file pronti per la stampa per biglietti da visita coordinati.",
+  },
+  {
+    name: "Seconda Lingua sul Sito",
+    desc: "Struttura multilingua per accogliere clienti internazionali e turisti.",
+  },
+  {
+    name: "Assistente / FAQ WhatsApp Automatizzato",
+    desc: "Risposte automatiche su orari, listini e domande frequenti attive anche fuori orario lavorativo.",
   },
 ];
 
